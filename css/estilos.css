@@ -1,0 +1,99 @@
+/*
+  Estilos Chocolat Suprême — PR2
+  Si cambias colores, el marrón (#5c3a21) y el dorado (#c48a5c) son los que más se repiten.
+*/
+
+/* reset básico, nada raro */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; background-color: #fef8f2; color: #2e241f; line-height: 1.5; }
+.top-bar { background-color: #5c3a21; color: white; text-align: center; padding: 0.4rem; font-size: 0.75rem; }
+header { position: sticky; top: 0; background: rgba(255,252,248,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(180,140,100,0.2); padding: 1rem 0; z-index: 1000; }
+.header-inner { max-width: 1400px; margin: auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.logo a { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; text-decoration: none; color: #5c3a21; }
+.nav-menu { display: flex; gap: 2rem; flex-wrap: wrap; }
+.nav-link { background: none; border: none; font-size: 0.8rem; font-weight: 500; text-transform: uppercase; cursor: pointer; color: #5c3a21; transition: 0.2s; }
+.nav-link:hover, .nav-link.active { color: #c48a5c; }
+.cart-btn { background: none; border: none; font-size: 1rem; cursor: pointer; display: flex; gap: 8px; align-items: center; color: #5c3a21; }
+.cart-badge { background: #c48a5c; color: white; border-radius: 30px; padding: 0.1rem 0.6rem; font-size: 0.7rem; }
+/* portada: la foto va en la carpeta Pag, no dentro de css */
+.hero { height: 90vh; background-image: url('../fondo 2.png'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.4)); }
+.hero-content { position: relative; color: white; max-width: 800px; padding: 2rem; }
+.hero-content h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; letter-spacing: 4px; }
+.hero-content p { font-size: 1.2rem; margin: 1.5rem 0; }
+.btn { background: transparent; border: 2px solid white; color: white; padding: 0.8rem 2rem; cursor: pointer; transition: 0.3s; }
+.btn:hover { background: white; color: #5c3a21; }
+.container { max-width: 1280px; margin: auto; padding: 4rem 2rem; }
+/* una sola página: solo se ve la sección con clase activa */
+.seccion { display: none; animation: fade 0.3s; }
+.seccion.activa { display: block; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.titulo { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; text-align: center; margin-bottom: 2rem; color: #3e2a1f; }
+.carrusel-container { position: relative; margin: 2rem 0; display: flex; align-items: center; justify-content: center; }
+.carrusel-wrapper { overflow-x: hidden; scroll-behavior: smooth; width: calc(100% - 80px); white-space: nowrap; }
+.carrusel-items { display: inline-flex; gap: 1.5rem; }
+.carrusel-card { width: 280px; background: white; border-radius: 20px; overflow: hidden; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.2s; }
+.carrusel-card:hover { transform: translateY(-5px); }
+.carrusel-card img { width: 100%; height: 280px; object-fit: cover; }
+.carrusel-card .info { padding: 1rem; text-align: left; }
+.carrusel-flecha { background: rgba(255,255,255,0.8); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; margin: 0 5px; }
+.grid-servicios { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+.tarjeta-servicio { background: white; border-radius: 24px; overflow: hidden; cursor: pointer; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.tarjeta-servicio:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.tarjeta-img { height: 320px; background-size: cover; background-position: center; }
+.tarjeta-info { padding: 1.5rem; }
+.tarjeta-titulo { font-size: 1.4rem; font-weight: 600; display: flex; justify-content: space-between; }
+.producto-detalle { max-width: 1000px; margin: auto; background: white; border-radius: 32px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.volver { display: inline-block; margin-bottom: 1rem; cursor: pointer; color: #c48a5c; }
+.caja-personalizada { background: #fefaf7; border-radius: 24px; padding: 1.5rem; margin: 1rem 0; }
+.lista-sabores { display: flex; flex-direction: column; gap: 1rem; margin: 1rem 0; max-height: 400px; overflow-y: auto; }
+.item-sabor { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0e3d9; padding: 0.8rem; flex-wrap: wrap; gap: 0.5rem; }
+.item-izquierda { display: flex; align-items: center; gap: 1rem; }
+.item-izquierda img { width: 60px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer; }
+.item-izquierda span { cursor: pointer; font-weight: 500; }
+.item-izquierda input { width: 100px; padding: 0.5rem; border-radius: 30px; text-align: center; border: 1px solid #e6cfbf; }
+.precio-estimado { background: #f4ede8; padding: 0.8rem; border-radius: 28px; text-align: center; margin: 1rem 0; font-size: 0.9rem; }
+.btn-agregar { background: #5c3a21; border: none; padding: 0.8rem; border-radius: 60px; font-weight: 600; color: white; width: 100%; cursor: pointer; transition: 0.2s; }
+.btn-agregar:hover { background: #c48a5c; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; }
+.modal-contenido { background: white; max-width: 500px; width: 90%; border-radius: 32px; padding: 2rem; position: relative; }
+.cerrar-modal { position: absolute; top: 1rem; right: 1.5rem; font-size: 1.8rem; cursor: pointer; }
+.panel-pedido { background: white; border-radius: 32px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.flex-pedido { display: flex; flex-wrap: wrap; gap: 2rem; }
+.carrito-lista { flex: 2; }
+.datos-cliente { flex: 1.5; background: #fefaf7; border-radius: 28px; padding: 1.5rem; }
+.cart-item { display: flex; justify-content: space-between; padding: 0.8rem 0; border-bottom: 1px solid #f0e0d4; }
+.total-carrito { font-size: 1.4rem; font-weight: 700; text-align: right; margin-top: 1rem; }
+.btn-primario { background: #5c3a21; border: none; width: 100%; padding: 1rem; border-radius: 60px; font-weight: 600; color: white; cursor: pointer; }
+.btn-secundario { background: #f1e1d6; border: none; padding: 0.6rem 1.2rem; border-radius: 40px; cursor: pointer; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { font-weight: 500; display: block; margin-bottom: 0.3rem; }
+input, textarea { width: 100%; padding: 0.8rem 1rem; border-radius: 50px; border: 1px solid #e6cfbf; font-family: 'Montserrat', sans-serif; }
+.mqtt-panel { margin-top: 1rem; padding: 0.5rem; background: #f4ede8; border-radius: 28px; font-size: 0.8rem; text-align: center; }
+.perfil-panel { background: #fefaf7; border-radius: 28px; padding: 1.5rem; margin-top: 1rem; }
+/* mi cuenta: listado de tarjetas del autónomo */
+.tarjetas-lista { display: flex; flex-direction: column; gap: 0.75rem; margin: 1rem 0; }
+.tarjeta-item {
+    background: white; border: 1px solid #e6cfbf; border-radius: 16px;
+    padding: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem;
+}
+.tarjeta-item.principal { border-color: #c48a5c; box-shadow: 0 0 0 1px #c48a5c33; }
+.tarjeta-badge { font-size: 0.7rem; background: #c48a5c; color: white; padding: 0.15rem 0.6rem; border-radius: 20px; }
+.tarjeta-acciones { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.btn-tarjeta { background: #f1e1d6; border: none; padding: 0.35rem 0.8rem; border-radius: 30px; cursor: pointer; font-size: 0.75rem; }
+.btn-tarjeta:hover { background: #e6cfbf; }
+.btn-tarjeta.eliminar { background: #fde8e8; color: #8b2e2e; }
+.nueva-tarjeta-box { background: #fff; border: 1px dashed #c48a5c; border-radius: 16px; padding: 1rem; margin-top: 0.5rem; }
+footer { background: #26211c; color: #d9cdc1; padding: 3rem 2rem 1.5rem; margin-top: 3rem; }
+.footer-grid { max-width: 1280px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2rem; margin-bottom: 1rem; }
+.footer-col h4 { font-family: 'Cormorant Garamond', serif; }
+.footer-col ul { list-style: none; }
+.footer-col ul li a { color: inherit; text-decoration: none; }
+.footer-col ul li a:hover { color: #c48a5c; }
+.newsletter { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.newsletter input { flex: 1; background: #3a322c; border: none; color: white; }
+.newsletter button { background: #c48a5c; border: none; padding: 0.6rem 1rem; border-radius: 40px; cursor: pointer; }
+.footer-bottom { text-align: center; font-size: 0.7rem; }
+/* móvil: el carrusel sin flechas y el hero más pequeño */
+@media (max-width:800px) { .hero h1 { font-size: 2rem; } .carrusel-flecha { display: none; } .carrusel-wrapper { width: 100%; } .item-sabor { flex-direction: column; align-items: stretch; } }
+    
